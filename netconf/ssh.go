@@ -75,9 +75,9 @@ func (c *sshClient) NewSession() (*Session, error) {
 		if session, err = s.init(); err == nil {
 			return session, nil
 		}
+		s.sshSession.Close()
 	}
 
-	s.sshSession.Close()
 	return nil, err
 }
 
